@@ -1,0 +1,53 @@
+<html>
+    <head>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:700,400' rel='stylesheet' type='text/css'>
+    <link href="static/style.css" rel="stylesheet" type="text/css" media="screen" />
+    <script type='application/javascript' src='static/fastclick.js'></script>
+    <meta charset="UTF-8">
+    <script>
+
+      document.createElement('header');
+
+      document.createElement('footer');
+
+      document.createElement('section');
+
+      document.createElement('aside');
+      
+      if ('addEventListener' in document) {
+        document.addEventListener('DOMContentLoaded', function() {
+            FastClick.attach(document.body);
+        }, false);
+    }
+
+    </script>
+        {% if title %}
+        <title>{{ title }} - Soundboard</title>
+        {% else %}
+        <title>Soundboard</title>
+        {% endif %}        
+    </head>
+    
+    <body>
+        <div id="container">
+            <header>
+                <h1>{{ title }}</h1>
+            </header>
+            <section>
+                <ul>
+                {% block content %}{% endblock %}
+                </ul>
+            </section>
+            <footer>
+                <p><small>This app is for non-commercial use</small></p>
+            </footer>
+        </div>
+        <ul id="nav">
+            <li><a href="/">Home</a></li>
+            {% for category in categories %}
+            <li><a href="/{{ category.name }}">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul> 
+    </body>
+    
+</html>

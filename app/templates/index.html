@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+        <li>
+        {% for sound in sounds %}
+            <a onclick="this.firstElementChild.play()" class="btn">
+            <audio src="{{ sound.source }}"></audio>{{ sound.name }}</a>
+            {% if loop.index is divisibleby 2 %}
+                </li><li>
+            {% endif %}
+        {% endfor %}
+{% endblock %}
+        
